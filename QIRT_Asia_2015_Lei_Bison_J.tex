@@ -1,0 +1,282 @@
+% tQRTguide.tex
+% v1.2 released August 2014
+
+\documentclass{tQRT2e}
+
+\usepackage{subfigure}% Support for small, `sub' figures and tables
+\usepackage{multirow}
+\usepackage{fontspec}
+
+\begin{document}
+
+%\jvol{00} \jnum{00} \jyear{2014} \jmonth{August}
+
+%\articletype{GUIDE}% NOT NEEDED FOR A RESEARCH ARTICLE IN THIS JOURNAL%
+
+\title{Panoramic View of the Heat Flux Inside an Insulated Vehicle by Infrared Thermography}
+
+\author{Lei, Lei$^{\rm a}$$^{\ast}$\thanks{$^\ast$Corresponding author. Email: lei.lei.1@ulaval.ca
+		\vspace{6pt}},  Alessandro Bortolin$^{\rm b}$, Gianluca Cadelano$^{\rm b}$, Giovanni Ferrarini$^{\rm b}$, Stefano Rossi$^{\rm b}$, Paolo Bison$^{\rm b}$ and Xavier Maldague$^{\rm a}$ \\\vspace{6pt}  $^{a}${\em{Computer Vision and Systems Laboratory, 1065, avenue de la Médecine, University Laval, Quebec G1V 0A6, Canada}};
+	$^{b}${\em{CNR-ITC, Corso Stati Uniti 4, 35127 Padova, Italy}} \\\received{} }
+
+\maketitle
+
+\begin{abstract}
+	An IR camera is mounted on a pan-tilt head and automatically driven to map the temperature of the inner walls of the insulated box on a refrigerated vehicle. The vehicle is introduced in a test chamber where special conditions are applied, in such a way to maintain an inner-outer temperature difference of around 25 °C. The objective of this work is that of complementing the qualitative results obtained by infrared thermography, with an evaluation of the heat flux flowing through the wall.
+	
+\begin{keywords} Infrared thermography; heat flux mapping; IR panorama view; IR mosaicking; Insulated vehicles 
+\end{keywords}
+\end{abstract}
+
+%
+%
+\section{Introduction}
+According to a recent report \cite{Zion2016}, the global cold chain equipment (that is storage plus transport) market is growing rapidly and will reach an amount of about 120 Billion of USD by 2021. In particular, the sector of refrigerated trailers is expected to expand at a $ 4.4\% $ CAGR (Compound Annual Growth Rate) in the period 2015-2021 \cite{RM2015}. Nowadays it could be estimated that there is a total of about four millions of refrigerated vehicles all around the world \cite{UNEP2010}. It’s so clear that the demand for a quality and safe transport is increasing all over the world, especially in the Asia pacific region and it involves not only the perishable foodstuff (like frozen, dairy, meat, fish and seafood products), but also vaccines, drugs, chemical pharmaceuticals and in general all the goods that are temperature-sensitive. 
+
+The approach of every actor (stakeholders, customers, transport companies, etc.) in the field of refrigerated transport is more and more being focused on the idea of an efficient and energy saving transport. Energy consumption is, therefore, becoming one of the major aspects studied in the recent times (\cite{Tassou2009,Cavalier2010,Adekomaya2017}). 
+
+It’s of all evidence that the thermal insulation is a key factor in the global account of the energy consumption applied to the system transport and recent researches try to obtain and utilize new materials in order to have a lower thermal conductivity of the walls of the insulated vehicles (\cite{Tinti2014,Lawton2016}).
+
+Moreover, there are many international regulations, standards, agreements related to the measure of the thermal insulation properties. Among the others, there are ISO 1496/2 (thermal container), American Bureau of Shipping (certification of Cargo Container) and ATP (Agreement on Transport of Perishable Foodstuffs).
+
+The ATP agreement \cite{Geneva1970}, even if it’s not a standard, can be considered as a reference “de facto” in the field of the refrigerated transport all over Europe, North Africa and Central Asia countries. The principal methodology to assess the quality of insulation of a refrigerated vehicle is the measure of the overall heat transfer coefficient (so called K-value) defined as:
+\begin{equation}
+K=\frac{W}{S⋅\Delta \theta}
+\end{equation}
+
+
+where $ W $ is the power necessary to maintain a steady temperature difference $ \Delta \theta $ between the mean internal and external air temperature of the box and S is the mean surface of the box, given by the geometric mean of the inside ($ Si $) and outside ($ Se $) surface areas:
+
+\begin{equation}
+S=\sqrt{S_i∙S_e}
+\end{equation}
+
+CNR-ITC has a facility test lab for the measuring of the K-value, being also one of the officially designated test station in Italy; it has also a consolidated experience (more than 30 years) in the measure of the K-value (\cite{rossi2009k}).
+
+The result of this type of measure is a global indicator of the insulation quality of the container, but cannot give any information about some local defects in the structure, such as thermal bridges, air leakages or zones of anomalous aging. IR thermography can be particularly helpful to these issues. In fact, all the defects mentioned above lead to a variation of the heat flux and temperature on the surface of the box (\cite{grinzato2010r, grinzatoquality, grinzato1comparison}). Therefore, the local heat flux map obtained by infrared thermography could give a straightforward visualization of the structure, and also a local evaluation of the transmittance.
+
+This work consists of the image processing applied to an insulated box on a refrigerated vehicle (\cite{bison1993automatic,bison2012geometrical}). In practice, the experimentation will be performed to map the heat flux on each one of its internal surfaces by infrared thermography. When considering all the surfaces a panoramic view of the heat flux will be composed.
+
+
+\section{The heat transfer model}
+
+In what follows we describe a simplified model of the heat transfer from inside the equipment under test and the outside. In order to meet the requirements of ATP a heater is working inside the insulated vehicle. When steady conditions are reached it delivers a power $ W $ in order to maintain a steady air temperature $ \theta_i $ inside the box. Because the external temperature is lower than the internal one, heat flows from inside to the outside of the box where a steady air temperature is maintained at the level of $ \theta_e $. Heat is transferred by convection from the hot inside air to the internal surface of the wall, by conduction through the wall and again by convection from the external surface of the wall to the cold outside air according to the scheme of Figure~\ref{Therm_Res}. 
+
+In the hypotheses that the heat flux is essentially 1D, $ h_e $ and $ h_i $ are respectively the effective heat exchange coefficients external and internal. $ \theta_{we} $ and $ \theta_{wi} $ are the average temperature of the external and internal walls respectively, while $\lambda $ is the thermal conductivity of the wall and l its thickness. Of course, the central thermal resistance of Figure~\ref{Therm_Res} is the sum of the individual thermal resistances given by the different layers of the insulated wall. In many cases three layers composes the walls of an insulated box mounted on a truck: two internal-external skins made by polyester-fiberglass and a core made by high density polyurethane foam.
+\begin{figure}[ht]
+	\centering
+	\includegraphics{Therm_Res}
+	\caption{Overall thermal behavior of the container under test represented as an analogy of an electrical circuit}
+	\label{Therm_Res}
+\end{figure}
+
+
+What is seen by looking with thermography at the internal wall of the insulated container is substantially a uniform temperature with possible local variations that could depend on the reduction of insulation. For instance, the joint zone of two insulation panel modules could produce a more or less severe thermal bridge due to the structural elements present in the connection that are typically more conductive than the core polyurethane foam. It means that a local variation of thermal conductivity leads to a local increase of the heat flux with a consequent variation of the local internal and external wall temperature. Thanks to the possibility given by thermography of mapping the internal temperature of the insulated box it is more convenient to turn from a global view to a local view of the heat transfer. Specifically, by measuring in a reference zone of the internal wall the specific heat flux by a thermal flux meter, and by looking at the wall temperature in the proximity of the flux meter and by measuring the air temperature the following local equation can be drawn:
+
+\begin{equation}
+q_r=\frac{\theta_{wi}(x_r,y_r )-\theta_i}{1/h_i}
+\end{equation}
+
+
+where $ q_r $ is the specific heat flux measured at the reference point by the heat flux meter and $ \theta_{wi}(x_r,y_r) $ is the temperature measured on the internal wall by thermography at the coordinate of the reference point, or very close to it. The assumption that the internal heat exchange coefficient $ h_i $ does not vary significantly with the position permits to take the temperature and flux measurements in the reference point as a pivot, chosen after a preliminary thermographic scanning. The heat flux map may be determined basing on the temperature map obtained by thermography according to the following equation:
+\begin{equation}
+q(x,y)=q_r\frac{\theta_{wi} (x,y)-\theta_i}{\theta_{wi} (x_r,y_r)-\theta_i}=\frac{q_r}{\Delta \theta_r}\Delta \theta_{x,y}+q_r=h_i \Delta \theta_{x,y}+q_r
+\end{equation}
+where $\Delta \theta_{x,y}=[\theta_{wi} (x,y)- \theta_{wi} (x_r,y_r)] $ and $ \Delta \theta_r =\theta_{wi}(x_r,y_r)- \theta_i $.\\
+Equation 4 gives $ q(x,y) $ as a linear relation depending on  $ \Delta \theta_{x,y} $, with intercept $ q_r $ and slope $ h_i $. It shows that the mapping of heat flux depends linearly on the measurement of the temperature difference between any point of the surface and the reference point (nearby the position of the heat flux meter). The mapping of temperature difference is one of the points of strength of IR thermography that, in high quality equipment, can reach a NETD (Noise Equivalent Temperature Difference) as low as 20 $ mK $. In case of surface temperature variation statistically distributed around the $ \Delta \theta_{wi}(x_r,y_r) $ value, $ \Delta \theta_{x,y} $ will be very close to zero in the average and we expect to obtain an average value of the heat flux very close to the reference one $ q_r $. In such a case the uncertainty of the average value of $ q(x,y) $ depends essentially on the accuracy of the $ q_r $ that we can estimate in $ ± 5\% $. In correspondence of thermal bridges $ \Delta \theta_{x,y}$ becomes negative in the average. Consequently, $ q(x,y) $  assumes values greater than $ q_r $. In this case it is important also the correct evaluation of the slope parameter $ h_i $ that, on its turn, depends both on the accuracy of the $ q_r $ measurement and on that of $ \Delta \theta_{r} $.
+
+\section{Experimental setup}
+An IR camera is mounted on a pan-tilt head and automatically driven by a suitable software to map the temperature of the inner walls of the insulated box on a refrigerated vehicle. Figure~\ref{Exp_setup} shows the installed Pan-Tilt camera inside the truck. The angles of the Pan-Tilt camera are set as follows: panning from 0° to 360° with 20° steps; tilting from 0° to 180° with 15° steps. Besides, a heat flux meter is set to measure the corresponding heat flux on a suitable zone, possibly far from thermal bridges. The acquisition system used in this work is a low-cost IR camera FLIR A320, with a field of view (FOV) $ 25°×19° $. It records IR images of all the inner walls during the whole test. Furthermore, when the steady conditions are reached (it takes generally not less than 8 hours, according to the ATP test), several rounds of IR images have been collected.
+
+According to the ATP, the test is carried out by means of a combined convection-radiation heater that heats the inside of the insulated box at a temperature around $ 32.5°C $. The vehicle, with its insulated box is located inside an isothermal tunnel where the air is flowing at a velocity between 1 and 2 $ m⋅s^{−1} $ and the temperature is maintained constant at about $ 7.5 °C $. This allows to obtain a temperature difference between inside and outside of $ ∆\theta  = 25°C$. Two hypothesis are proposed in this test: 1) the heat exchange coefficients, inside ($ h_i $) and outside ($ h_e $) of the container are constant; 2) the heat diffusion is mainly 1D. These assumptions permit the computation of the heat flux for each surface. Moreover, for the correction of the emissivity with the angle, according to the Lambert cosine law (\cite{dragano2009experimental,Hottel1967a}), the observed intensity is equal from a normal direction and an off-normal direction. Therefore, it is negligible within the angles utilized in this inspection.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.35]{Camera_setup}
+	\caption{The inside of the insulated box used for the test.}
+	\label{Exp_setup}
+\end{figure}
+
+
+\section{Image processing}
+The use of a pan-tilt head ensures a uniform coverage of the visual field with $ 320×240 $ pixels full view and allows to stitch the images using cylindrical or spherical coordinates by pure translation. Normal panorama contains complex image-processing of translation, rotation and perspective projection, etc. However, cylindrical and spherical panoramas are commonly used because of their ease of construction. In our case, spherical panorama is more convenient. Szeliski and Shum [18] explain in details how to compute approximate spherical projection using focal length. Brief conversion is shown in Figure~\ref{Sph_pro}. Therefore, the conclusion is that, given the focal length $ f $ and the image coordinates $ (x, y) $, the corresponding spherical coordinates $ (x′, y′) $ are:
+\begin{align}
+x'={} f⋅tan(\dfrac{x-x_c}{f})+x_c \notag \\
+y'=f⋅\frac{tan(\dfrac{y-y_c}{f})}{cos(\dfrac{x-x_c}{f})} +y_c
+\end{align}
+
+where $ (x_c,y_c) $ are the center coordinates of the spherical image.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.30]{Sph_1}
+	\includegraphics[scale=0.325]{Sph_2}
+	\caption{Spherical projection.}
+	\label{Sph_pro}
+\end{figure}
+
+Original image and its spherical projection are shown in Figure~\ref{Orig_sph}.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.44]{img7}
+	\includegraphics[scale=0.44]{sph_img7}
+	\caption{Original IR image (left) and its spherical projection (right).}
+	\label{Orig_sph}
+\end{figure}
+
+The next part is to stitch all spherical images together to create a panorama. Here one tried to detect and extract the main features in each image by using the Harris corners \cite{Harris1988}. One result is shown in Figure~\ref{Harris} the features obtained by automatic detectors between images are failed to be matched, this might due to the narrow view of the IR camera and the similarity of the internal surface of the vehicle. In this case, one has to proceed with the manual image stitching.  Thanks to the precedent spherical projection, full panorama can be created only by translations without rotation \cite{Szeliski1997}, which can help creating fast and easily.
+\begin{figure}[ht]
+	%	\centering
+	\includegraphics[scale=0.65]{Harris1}
+	\includegraphics[scale=0.65]{Harris2}
+	\caption{One example of Harris corners detected for two continue images.}
+	\label{Harris}
+\end{figure}
+
+To estimate the translation between images, a scheme is elucidated in Figure~\ref{Trans}, where $ n $ is the width of each image, $ \Delta n $ is the displacement for image translation, for a given Pan angle $ (20°) $ and a field of view $ (25°x19°) $. Therefore $ \Delta n $ can be obtained by a simple calculation:
+\begin{equation}
+\Delta n=\dfrac{n}{2}⋅[1-tan(20°-25°/2)\cdot tan(90°-25°/2)]
+\end{equation}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.45]{img_trs}
+	\caption{ Estimation of translation between images.}
+	\label{Trans}
+\end{figure}
+
+Once estimating the translations, it is possible to overlay the two contiguous images together. In this case, for the blended regions between images, the max function of Matlab, which returns the maximum value in the blended regions of two images, is utilized. The reason is that, since after the spherical projection of original images there are several regions with $ NaN $ values, it is not possible to make average from the two overlapping images. The iterate calculation is shown in Figure~\ref{img_sti} and the result in the IR is shown in Figure~\ref{Pano_T_Final}.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.4]{img_sti}
+	\caption{Stitching of images.}
+	\label{img_sti}
+\end{figure}
+
+\begin{figure}[ht]
+%	\centering
+	\hspace*{-20pt}
+	\includegraphics[scale=0.3]{Pano_T_Final}
+	\caption{Temperature panorama of the inside vehicle.}
+	\label{Pano_T_Final}
+\end{figure}
+
+\section{Heat flux panorama}
+According to equation (3) and (4) the auxiliary measurement of the heat flux in a reference point allows to transform the surface temperature image (panorama) in a heat flux image (panorama). The measurement of the heat flux density in the reference point is shown in Figure~\ref{Flux_meter}. After 10 hours from the beginning of the test until the steady condition is reached, one takes its mean value as the heat flux density reference. The panorama of temperature is therefore transformed into the panorama of heat flux density by equation (4), which is displayed in Figure~\ref{Pano_Q_Final} . 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.42]{QIRT2015Aisa_Fig8}
+	\caption{Heat Flux meter measurement.}
+	\label{Flux_meter}
+\end{figure}
+
+\begin{figure}[ht]
+%	\centering
+	\hspace*{-20pt}
+	\includegraphics[scale=0.3]{Pano_Q_Final}
+	\caption{Heat Flux panorama of the inner part of the vehicle.}
+	\label{Pano_Q_Final}
+\end{figure}
+
+
+
+\section{Comparison with ATP test results }
+The ATP test results can be found in Table~\ref{box_dim} and Table~\ref{ATP_res}.
+\begin{table}[ht]
+	\centering
+	\caption{Insulated box dimensions.}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		
+		 & \multirow{3}{*}{\centering LENGTH [M]} & \multirow{3}{*}{\centering WIDTH [M]} & \multirow{3}{*}{\centering HEIGHT [M]} & \multirow{3}{*}{\centering SURFACE [$ M^2 $]} &  SURFACE \\
+		 & & & & &  GEOMETRIC\\
+		 & & & & &  MEAN [$ M^2 $]\\
+		 \hline
+		INTERNAL & 7.890 & 2.455 & 2.705 & 94.71 & \multirow{2}{*}{98.98} \\
+%		\hline
+		EXTERNAL & 8.055 & 2.575 & 2.915 & 103.46 & \\
+		\hline
+	\end{tabular}
+	\label{box_dim}
+\end{table}
+
+
+\begin{table}[ht]
+	\centering
+	\caption{ATP test results.}
+	\begin{tabular}{c|c}
+		\hline
+		Fans Power [$ W $] (Mean over 6 hours) & 144 \\
+		\hline 
+		Heaters Power [$ W $] (Mean over 6 hours) &	988\\
+		\hline
+		Internal temperature [$ °C $] (Mean over 6 hours) &	32.5\\
+		\hline
+		External temperature [$ °C $] (Mean over 6 hours) &	7.5\\
+		\hline
+		K-Value [$ W/(K\cdot m^2 $)]	& 0.46 \\
+		\hline
+	\end{tabular}
+	\label{ATP_res}
+\end{table}
+The ATP K-value above is obtained by the Eq. (1). 
+With the help of the spherical projection of each image, and from the specifications of the camera, the pan tilt movement pattern, the size of the truck, and the position of the apparatus inside the truck, one can eventually figure out an Area Map Panorama, corresponding to the Temperature Panorama. The computation is illustrated in Figure~\ref{Image2}.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.55]{Image2}
+	\caption{ Schema of calculating real size of each image (Left: Side view; Right: Plan view).}
+	\label{Image2}
+\end{figure}
+
+Where $ L’ $ is the distance from the camera to the surface in each image, and $ S $ is the height (or width, depending on which angle used in FOV $ [25° or 19°] $) of image. $ D $ and $ L $ are the width and length of internal part of truck, respectively. Therefore, we have:
+\begin{align}
+H= & \frac{D}{2*cos\theta} \indent or\indent  H'=  \frac{L}{2*sin\theta} \\
+L'= & \frac{H}{cos\varphi}   \indent or\indent  L' = \frac{H'}{cos\varphi}  \\
+S= & 2*L'*tan⁡(\dfrac{v}{2})
+\end{align}
+
+Note here when we use $ D $ or $ L $ to compute $ H $ or $ H’ $ depends on the angle between camera direction and the vertical direction to the truck inside wall ($\varphi $).\\
+The final result is shown in Figure~\ref{AM_map}:
+\begin{figure}[ht]
+%	\centering
+	\hspace*{-20pt}
+	\includegraphics[scale=0.4]{AM_map}
+	\caption{ Area map panorama of the inner part of the vehicle.}
+	\label{AM_map}
+\end{figure}
+
+Here one should note that the area map panorama obtained above is created by stitching each image together, so the surface size varies from part to part, not pixel to pixel. That’s because the spherical projection is performed for each image separately.
+Then starting with the heat flux and area map panoramas, one determines the ‘Power map’ by multiplying the former panoramas. Once one has the power value of each pixel, the total power from thermography method is established:
+
+\begin{align*}
+P_{map} =& Q_{map}×S_{map}  \\
+P_{total} =& sum(P_{map})  
+\end{align*}
+
+Where $ × $ represents the dot multiplication for matrix. And the final result is 1212.1 $ W $.
+
+Except this method, another technique is derived from IR thermography method. We can get the mean value of the internal surface heat flux from the final Heat Flux Panorama (Figure~\ref{Pano_Q_Final}): $q_{mean} = 11.724  W/m^2 $, which presents the whole internal heat power per square meters inside the truck. The mean value of the internal surface temperature (Figure~\ref{Pano_T_Final}) can be obtained in the same way: $ T_{mean} = 305.94 K = 32.79°C $.
+ Therefore, the final K-value from IR Thermography is:
+
+\begin{equation*}
+K_{th}=\frac{\bar{q}}{\Delta ̅\theta} =\frac{11.724}{32.79-7.5}=0.464 W/m^2∙K 
+\end{equation*}
+The error between these two results is then:
+
+\begin{equation*}
+e=  \frac{|K_{th}-K|}{K}=\frac{0.464-0.46}{0.46}=0.0087=0.87\%
+\end{equation*}
+
+result reveals the accuracy of IR thermography method, comparing to ATP test. Here it should be noted the difference between ATP test and IR thermography methods is that, during the ATP calculation the mean surface of the truck, given by the geometric mean of the inside and outside surface areas, is taken into account, while in IR thermography, one just takes the internal surface of the truck. What’s more, the necessary power to maintain the ATP test was given by the heaters power plus the fans power (Table~\ref{box_dim} and Table~\ref{ATP_res}). Whereas, the heat flux detected by the heat flux meter in the specific area on internal surface of the truck, is the actual power per square meters implemented on the surface. The power corresponding by this value multiplied by the internal surface should be less than the total power:
+
+\begin{align*}
+W_{th}= \bar{q}*S_i{in}=&11.724*94.71=1110.38 W \\
+W_{total}= &144 + 988 = 1132 W
+\end{align*}
+
+
+\section{Conclusion}
+
+This work  mainly focused on mapping the heat flux on the internal surface of an insulated vehicle by infrared thermography technique. The ATP measurement was performed to obtain the experimental results, meanwhile an IR camera is mounted on a pan-tilt head and automatically driven by a suitable software to map the temperature of the inner walls at the steady condition, in order to analyze and compute the corresponding heat flux on the entire surfaces. A simple thermal resistance model has been applied to realize the computation. The final temperature figures showed a good uniform distribution, and several defects in the structure like thermal bridges or air leakages could be identified. A reference zone of the internal wall is measured by a thermal flux meter, then with that reference the whole surface heat flux map have been figured out. Besides, when all round of images was obtained, a panoramic view of the heat flux has been composed. Image processing techniques such as spherical projection, image translation and stitching have been performed with the raw images. The preliminary results demonstrate the algorithm can work, however the narrow view of the IR camera and the similarity of the internal surface of the vehicle make much difficult to create the full-view panorama by automatic detectors between images, which leads to a manual detection that took much more time to complete. Nonetheless, the final result of K-value obtained by IR thermography is accurate enough comparing to ATP test (0.87\% of error).
+
+\bibliographystyle{tQRT}
+\bibliography{Biblio_th}
+\end{document}
