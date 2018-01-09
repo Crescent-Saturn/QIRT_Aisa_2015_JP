@@ -33,7 +33,7 @@
 \section{Introduction}
 According to a recent report \cite{Zion2016}, the global cold chain equipment (that is storage plus transport) market is growing rapidly and will reach an amount of about 120 billion of USD by 2021. In particular, the sector of refrigerated trailers is expected to expand at a $ 4.4\% $ CAGR (Compound Annual Growth Rate) in the period 2015-2021 \cite{RM2015}. Nowadays it could be estimated that there is a total of about four million refrigerated vehicles in use around the world \cite{UNEP2010}. It is thus clear that the demand for a high quality and safe transport is increasing worldwide, especially in the Asia Pacific region and this involves not only the perishable foodstuffs (such as frozen, dairy, meat, fish and seafood products), but also vaccines, drugs, chemical pharmaceuticals and in general all goods that are temperature-sensitive. 
 
-Every actor (stakeholders, customers, transport companies, etc.) in the field of refrigerated transport is focussing increasingly on the idea of an efficient and energy saving transport. Energy consumption is, therefore, becoming one of the major aspects studied in the recent times \cite{Tassou2009,Cavalier2010,Adekomaya2017}. 
+Every actor (stakeholders, customers, transport companies, etc.) in the field of refrigerated transport is focusing increasingly on the idea of an efficient and energy saving transport. Energy consumption is, therefore, becoming one of the major aspects studied in the recent times \cite{Tassou2009,Cavalier2010,Adekomaya2017}. 
 
 Therefore thermal insulation is a clearly key factor in the global account of the energy consumption applied to the system transport and recent research has attempted to obtain and utilize new materials in order to ensure a lower thermal conductivity of the walls of the insulated vehicles \cite{Tinti2014,Lawton2016}.
 
@@ -100,7 +100,7 @@ According to the ATP, the test is carried out by means of a combined convection-
 
 
 \section{Image processing}
-The use of a pan-tilt head ensures a uniform coverage of the visual field with $ 320×240 $ pixels full view and allows the images to be stitched using cylindrical or spherical coordinates by pure translation. Normal panoramas involve complex image-processing including translation, rotation and perspective projection, etc. However, cylindrical and spherical panoramas are commonly used because of their ease of construction. In our case, a spherical panorama is more convenient. Szeliski and Shum [18] explain in detail how to compute an approximate spherical projection using the focal length. A brief conversion is shown in Figure~\ref{Sph_pro}. In which $X, Y, Z$ are the 3D point coordinates of the object, and $\hat{x}, \hat{y}, \hat{z}$ are the corresponding spehrical coordinates. Then $\tilde{x}, \tilde{y}$ are the coordinates in spherical images. $f$ is the focal length, $\theta$ is polar angle and $\phi$ (or $\varphi$) is azimuthal angle. Therefore, given the focal length $ f $ and the image coordinates $ (x, y) $, the corresponding spherical coordinates $ (x', y') $ are:
+The use of a pan-tilt head ensures a uniform coverage of the visual field with $ 320×240 $ pixels full view and allows the images to be stitched using cylindrical or spherical coordinates by pure translation. Normal panoramas involve complex image-processing including translation, rotation and perspective projection, etc. However, cylindrical and spherical panoramas are commonly used because of their ease of construction. In our case, a spherical panorama is more convenient. Szeliski and Shum [18] explain in detail how to compute an approximate spherical projection using the focal length. A brief conversion is shown in Figure~\ref{Sph_pro}. In which $X, Y, Z$ are the 3D point coordinates of the object, and $\hat{x}, \hat{y}, \hat{z}$ are the corresponding spherical coordinates. Then $\tilde{x}, \tilde{y}$ are the coordinates in spherical images. $f$ is the focal length, $\theta$ is polar angle and $\phi$ (or $\varphi$) is azimuthal angle. Therefore, given the focal length $ f $ and the image coordinates $ (x, y) $, the corresponding spherical coordinates $ (x', y') $ are:
 \begin{align}
 x'={} f·tan(\dfrac{x-x_c}{f})+x_c \notag \\
 y'=f·\frac{tan(\dfrac{y-y_c}{f})}{cos(\dfrac{x-x_c}{f})} +y_c
@@ -129,7 +129,7 @@ The next step involves stitching all of the spherical images together to create 
 	%	\centering
 	\includegraphics[scale=0.65]{Harris1}
 	\includegraphics[scale=0.65]{Harris2}
-	\caption{Harris corners detected (green crosses) in the Fig 4 and its precedent image of the whole series. In these two continus images, the IR camera scanned from top to bottom inside the vehicle and there is a ``clear" (from our vision) overlapping part (left bottom part in the first and left top part in the second) in these two images. However, from the Harris corners detection results, all the features obtained could not be matched correctly.}
+	\caption{Harris corners detected (green crosses) in the Fig 4 and its precedent image of the whole series. In these two continuous images, the IR camera scanned from top to bottom inside the vehicle and there is a ``clear" (from our vision) overlapping part (left bottom part in the first and left top part in the second) in these two images. However, from the Harris corners detection results, all the features obtained could not be matched correctly.}
 	\label{Harris}
 \end{figure}
 
@@ -228,14 +228,14 @@ With the help of the spherical projection of each image, and from the specificat
 	\label{Image2}
 \end{figure}
 
-Note that in Figure~\ref{Image2}, $ L’ $ is the distance from the camera to the surface in each image, and $ S $ is the height (or width, depending on which angle was used in the FOV $ [25° or 19°] $) of the image. $ D $ and $ L $ are the width and length of internal part of truck, respectively. Therefore, we have:
+Note that in Figure~\ref{Image2}, $ L’ $ is the distance from the camera to the surface in each image, and $ S $ is the height (or width, depending on which angle was used in the FOV [$25°$ or $19°$]) of the image. $ D $ and $ L $ are the width and length of internal part of truck, respectively. Therefore, we have:
 \begin{align}
 H= & \frac{D}{2*cos\theta} \indent or\indent  H'=  \frac{L}{2*sin\theta} \\
 L'= & \frac{H}{cos\varphi}   \indent or\indent  L' = \frac{H'}{cos\varphi}  \\
 S= & 2*L'*tan⁡(\dfrac{v}{2})
 \end{align}
 
-Note here whether we use $ D $ or $ L $ to compute $ H $ or $ H’ $ depends on the angle between the camera direction and the vertical direction to the inside wall of the vehicle($\varphi $).\\
+Note here whether we use $ D $ or $ L $ to compute $ H $ or $ H’ $ depends on the angle between the camera direction and the vertical direction to the inside wall of the vehicle ($\varphi $).\\
 The final result is shown in Figure~\ref{AM_map}.
 \begin{figure}[ht]
 %	\centering
@@ -255,7 +255,7 @@ P_{total} =& sum(P_{map})
 
 where $ × $ represents the dot multiplication for the matrix. The final result is 1212.1 $ W $.
 
-In addition to this method, another technique is also derived from the IR thermography method. We can obtain the mean value of the internal surface heat flux from the final Heat Flux Panorama (Figure~\ref{Pano_Q_Final}): $q_{mean} = 11.724  W/m^2 $, which provides the entire internal heat power per square meters inside the truck. The mean value of the internal surface temperature (Figure~\ref{Pano_T_Final}) can be obtained in the same way: $ T_{mean} = 305.94 K = 32.79°C $.
+In addition to this method, another technique is also derived from the IR thermography method. We can obtain the mean value of the internal surface heat flux from the final Heat Flux Panorama (Figure~\ref{Pano_Q_Final}): $q_{mean} = 11.724  W/m^2 $, which provides the entire internal heat power per square meters inside the truck. The mean value of the internal surface temperature (Figure~\ref{Pano_T_Final}) can be obtained in the same way: $ T_{mean} = 305.94 K = 32.79$ °C.
  Therefore, the final K-value from IR thermography is:
 
 \begin{equation}
@@ -277,7 +277,7 @@ W_{total}= &144 W + 988 W = 1132 W
 
 \section{Conclusion}
 
-This work  mainly focused on mapping the heat flux on the internal surface of an insulated vehicle by infrared thermography technique. The ATP measurement was performed to obtain the experimental results. An IR camera was mounted on a pan-tilt head and automatically driven by a suitable software to map the temperature of the inner walls at the steady condition, in order to analyse and compute the corresponding heat flux on the entire surface. A simple thermal resistance model has been applied to achieve the computation. The final temperature figures showed a good uniform distribution, and several defects in the structure, such as thermal bridges or air leakages, could be identified. A reference zone of the internal wall was measured using a thermal flux meter, and this reference was used to determine the heat flux map of the entire surface. When a complete set of images of the entire inside surface of the vehicle was obtained, a panoramic view of the heat flux was produced. Image processing techniques such as spherical projection, image translation and stitching have been performed with the raw images. The preliminary results demonstrate that the algorithm performs well, however the narrow view of the IR camera and the similarity of the internal surface of the vehicle make it difficult to create the full-view panorama due to the automatic detectors between images, which leads to a manual detection that requires more time to complete. Nonetheless, the final result of the K-value obtained by IR thermography is accurate enough and compares well with that of the ATP test (0.87\% of error).
+This work  mainly focused on mapping the heat flux on the internal surface of an insulated vehicle by infrared thermography technique. The ATP measurement was performed to obtain the experimental results. An IR camera was mounted on a pan-tilt head and automatically driven by a suitable software to map the temperature of the inner walls at the steady condition, in order to analyze and compute the corresponding heat flux on the entire surface. A simple thermal resistance model has been applied to achieve the computation. The final temperature figures showed a good uniform distribution, and several defects in the structure, such as thermal bridges or air leakages, could be identified. A reference zone of the internal wall was measured using a thermal flux meter, and this reference was used to determine the heat flux map of the entire surface. When a complete set of images of the entire inside surface of the vehicle was obtained, a panoramic view of the heat flux was produced. Image processing techniques such as spherical projection, image translation and stitching have been performed with the raw images. The preliminary results demonstrate that the algorithm performs well, however the narrow view of the IR camera and the similarity of the internal surface of the vehicle make it difficult to create the full-view panorama due to the automatic detectors between images, which leads to a manual detection that requires more time to complete. Nonetheless, the final result of the K-value obtained by IR thermography is accurate enough and compares well with that of the ATP test (0.87\% of error).
 
 \bibliographystyle{tQRT}
 \bibliography{Biblio_th}
