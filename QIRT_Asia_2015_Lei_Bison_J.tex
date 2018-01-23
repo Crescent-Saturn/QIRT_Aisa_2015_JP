@@ -65,7 +65,7 @@ In what follows we describe a simplified model of the heat transfer from inside 
 In the hypothesis that the heat flux is essentially 1D,  then $ h_e $ and $ h_i $ are respectively the effective external and internal heat exchange coefficients. $ \theta_{we} $ and $ \theta_{wi} $ are the average temperature of the external and internal walls respectively, while $\lambda $ is the thermal conductivity of the wall and $l$ is its thickness. The central thermal resistance of Figure~\ref{Therm_Res} is the sum of the individual thermal resistances given by the different layers of the insulated wall. In many cases three layers compose the walls of an insulated container mounted on a truck: two internal-external skins made of polyester-fiberglass and a core made of high density polyurethane foam.
 \begin{figure}[ht]
 	\centering
-	\includegraphics{Therm_Res}
+	\includegraphics{Figures_All/Fig.1.png}
 	\caption{Overall thermal behavior of the container being tested represented as an analogy of an electrical circuit}
 	\label{Therm_Res}
 \end{figure}
@@ -93,7 +93,7 @@ An IR camera is mounted on a pan-tilt head and automatically driven by a suitabl
 According to the ATP, the test is carried out by means of a combined convection-radiation heater that heats the inside of the insulated container at a temperature around 32.5 °C. The vehicle, with its insulated container is located inside an isothermal tunnel where the air is flowing at a velocity between 1 and 2 ms$^{−1}$ and the temperature is maintained constant at about 7.5 °C. This allows a temperature difference of $ ∆\theta  = 25 $ °C to be obtained between the inside and the outside of the insulated container. Two hypotheses are proposed in this test: 1) the heat exchange coefficients, inside ($ h_i $) and outside ($ h_e $) of the container are constant; 2) the heat diffusion is mainly 1D. These assumptions permit the computation of the heat flux for each surface. Moreover, for the correction of the emissivity with the angle, according to the Lambert cosine law \cite{dragano2009experimental,Hottel1967a}, the observed intensity is equal from a normal direction and an off-normal direction. Therefore, it is negligible within the angles used  in this inspection.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.35]{Camera_setup}
+	\includegraphics[scale=0.35]{Figures_All/Fig.2.jpg}
 	\caption{The inside of the insulated container used for the test.}
 	\label{Exp_setup}
 \end{figure}
@@ -109,8 +109,8 @@ y'=f·\frac{tan(\dfrac{y-y_c}{f})}{cos(\dfrac{x-x_c}{f})} +y_c
 where $ (x_c,y_c) $ are the center coordinates of the spherical image.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.5]{Sph_1}
-	\includegraphics[scale=0.5]{Sph_2}
+	\includegraphics[scale=0.5]{Figures_All/Fig.3a.jpg}
+	\includegraphics[scale=0.5]{Figures_All/Fig.3b.jpg}
 	\caption{Spherical projection.}
 	\label{Sph_pro}
 \end{figure}
@@ -118,8 +118,8 @@ where $ (x_c,y_c) $ are the center coordinates of the spherical image.
 The original image and its spherical projection are shown in Figure~\ref{Orig_sph}.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.44]{img7}
-	\includegraphics[scale=0.44]{sph_img7}
+	\includegraphics[scale=0.44]{Figures_All/Fig.4a.jpg}
+	\includegraphics[scale=0.44]{Figures_All/Fig.4b.jpg}
 	\caption{Original IR image (left) and its spherical projection (right).}
 	\label{Orig_sph}
 \end{figure}
@@ -127,8 +127,8 @@ The original image and its spherical projection are shown in Figure~\ref{Orig_sp
 The next step involves stitching all of the spherical images together to create a panorama. Here one attempts to detect and extract the main features in each image by using the Harris corners \cite{Harris1988}. One result is shown in Figure~\ref{Harris} which indicates that the features obtained by automatic detectors between images fail to match. This might be due to the narrow view of the IR camera and the similarity of the internal surface of the vehicle. In this case, one has to proceed with the manual image stitching.  The spherical projection allows a full panorama to be created using only translations without rotation \cite{Szeliski1997}, which can help to create the full panorama efficiently and easily.
 \begin{figure}[ht]
 	%	\centering
-	\includegraphics[scale=0.65]{Harris1}
-	\includegraphics[scale=0.65]{Harris2}
+	\includegraphics[scale=0.65]{Figures_All/Fig.5a.jpg}
+	\includegraphics[scale=0.65]{Figures_All/Fig.5b.jpg}
 	\caption{Harris corners detected (green crosses) in the Fig 4 and its precedent image of the whole series. In these two continuous images, the IR camera scanned from top to bottom inside the vehicle and there is a ``clear" (from our vision) overlapping part (left bottom part in the first and left top part in the second) in these two images. However, from the Harris corners detection results, all the features obtained could not be matched correctly.}
 	\label{Harris}
 \end{figure}
@@ -140,7 +140,7 @@ To estimate the translation between images, a scheme is elucidated in Figure~\re
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.45]{img_trs}
+	\includegraphics[scale=0.45]{Figures_All/Fig.6.jpg}
 	\caption{ Estimation of translation between images.}
 	\label{Trans}
 \end{figure}
@@ -148,7 +148,7 @@ To estimate the translation between images, a scheme is elucidated in Figure~\re
 Once the translations have been estimated, it is possible to overlay the two contiguous images together. In this case, for the blended regions between images, the \textit{max} function of Matlab, which returns the maximum value in the blended regions of two images, is used. The reason is that, since after the spherical projection of the original images, there are several regions with $ NaN $ values, it is not possible to obtain average from the two overlapping images. The iterate calculation is shown in Figure~\ref{img_sti} and the result in the temperature panorama of the inside of the vehicle is shown in Figure~\ref{Pano_T_Final}.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.4]{img_sti}
+	\includegraphics[scale=0.4]{Figures_All/Fig.7.jpg}
 	\caption{Stitching of images.}
 	\label{img_sti}
 \end{figure}
@@ -156,7 +156,7 @@ Once the translations have been estimated, it is possible to overlay the two con
 \begin{figure}[ht]
 %	\centering
 	\hspace*{-20pt}
-	\includegraphics[scale=0.3]{Pano_T_Final}
+	\includegraphics[scale=0.3]{Figures_All/Fig.8.jpg}
 	\caption{Temperature panorama of the inside of the vehicle.}
 	\label{Pano_T_Final}
 \end{figure}
@@ -165,7 +165,7 @@ Once the translations have been estimated, it is possible to overlay the two con
 According to equations (3) and (4) the auxiliary measurement of the heat flux in a reference point allows the surface temperature image (panorama) to be transformed into a heat flux image (panorama). The measurement of the heat flux density in the reference point is shown in Figure~\ref{Flux_meter}. Once a steady condition has been reached (10 hours from the beginning of the test), the mean value is taken as the heat flux density reference. The panorama of the temperature is therefore transformed into the panorama of heat flux density by equation (4), which is displayed in Figure~\ref{Pano_Q_Final} . 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.45]{QIRT2015Aisa_Fig8}
+	\includegraphics[scale=0.45]{Figures_All/Fig.9.jpg}
 	\caption{Heat Flux meter measurement.}
 	\label{Flux_meter}
 \end{figure}
@@ -173,7 +173,7 @@ According to equations (3) and (4) the auxiliary measurement of the heat flux in
 \begin{figure}[ht]
 %	\centering
 	\hspace*{-20pt}
-	\includegraphics[scale=0.3]{Pano_Q_Final}
+	\includegraphics[scale=0.3]{Figures_All/Fig.10.jpg}
 	\caption{Heat Flux panorama of the inner part of the vehicle.}
 	\label{Pano_Q_Final}
 \end{figure}
@@ -223,7 +223,7 @@ The ATP K-value above is obtained using the Eq. (1).
 With the help of the spherical projection of each image, and from the specifications of the camera, the pan tilt movement pattern, the size of the truck, and the position of the apparatus inside the truck, one can eventually generated an Area Map Panorama, corresponding to the Temperature Panorama. The computation is illustrated in Figure~\ref{Image2}.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.55]{Image2}
+	\includegraphics[scale=0.55]{Figures_All/Fig.11.jpg}
 	\caption{ Schema of calculating real size of each image (Left: Side view; Right: Plan view).}
 	\label{Image2}
 \end{figure}
@@ -239,9 +239,9 @@ Note here whether we use $ D $ or $ L $ to compute $ H $ or $ H’ $ depends on 
 The final result is shown in Figure~\ref{AM_map}.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.8]{One_elem}\\
+	\includegraphics[scale=0.8]{Figures_All/Fig.12a.jpg}\\
 	\hspace*{-20pt}
-	\includegraphics[scale=0.4]{AM_map}
+	\includegraphics[scale=0.4]{Figures_All/Fig.12b.jpg}
 	\caption{One element surface map (up) and the area panorama of the inner part of the vehicle.}
 	\label{AM_map}
 \end{figure}
